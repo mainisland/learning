@@ -14,9 +14,7 @@
 ###Ubuntu安装svn服务
 
 * apt-get install subversion
-
 * 找个目录作为svn的仓库    mkdir svn   svnadmin create svn/phpcms
-
 * 修改svnserve.conf文件 打开或者新增
       anon-access = read
       auth-access = write     

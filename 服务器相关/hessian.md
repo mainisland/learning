@@ -53,7 +53,7 @@
 				return 'CscBizException';
 			}
 
-// 			throw new CHttpException(500, Yii::t('yii', 'Has CscAppException by {class}::{action}', 		array('{class}'=>get_called_class(),'{action}'=>$method)));
+			//throw new CHttpException(500, Yii::t('yii', 'Has CscAppException by {class}::{action}', 		array('{class}'=>get_called_class(),'{action}'=>$method)));
 			// 这里需要兼容，java抛异常，把错误的异常信息放在message中 .  By Bear
 			throw new CHttpException(500, $Ex->getMessage()); 
 		}

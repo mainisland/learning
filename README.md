@@ -1,4 +1,2 @@
 # learning
-Learn and grow every day every day
-
-about linux mysql nginx and so on
+编程学习

@@ -4,10 +4,10 @@
 
 
 ##php调用java接口实例代码
-`<?php
-include_once CSC_LIBS_DIR . '/hessian/HessianClient.php';
+	<?php
+	include_once CSC_LIBS_DIR . '/hessian/HessianClient.php';
 
-class BaseHessianClient extends HessianClient {
+	class BaseHessianClient extends HessianClient {
 
 	private static $_self;
 	protected $aliases;
@@ -53,7 +53,7 @@ class BaseHessianClient extends HessianClient {
 				return 'CscBizException';
 			}
 
-// 			throw new CHttpException(500, Yii::t('yii', 'Has CscAppException by {class}::{action}', array('{class}'=>get_called_class(),'{action}'=>$method)));
+// 			throw new CHttpException(500, Yii::t('yii', 'Has CscAppException by {class}::{action}', 		array('{class}'=>get_called_class(),'{action}'=>$method)));
 			// 这里需要兼容，java抛异常，把错误的异常信息放在message中 .  By Bear
 			throw new CHttpException(500, $Ex->getMessage()); 
 		}
@@ -121,7 +121,7 @@ class BaseHessianClient extends HessianClient {
 		}
 		return $methodName;
 	}
-}`
+	}
 
 
 

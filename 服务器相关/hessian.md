@@ -1,10 +1,10 @@
 #Hessian
 
-ÇáÁ¿¼¶µÄRemoting Onhttpg¹¤¾ß£¬²ÉÓÃ¶ş½øÖÆRPCĞ­Òé£¬¶àÓïÑÔÖ§³Ö£»
+è½»é‡çº§çš„Remoting Onhttpgå·¥å…·ï¼Œé‡‡ç”¨äºŒè¿›åˆ¶RPCåè®®ï¼Œå¤šè¯­è¨€æ”¯æŒï¼›
 
 
-##phpµ÷ÓÃjava½Ó¿ÚÊµÀı´úÂë
-<?php
+##phpè°ƒç”¨javaæ¥å£å®ä¾‹ä»£ç 
+`<?php
 include_once CSC_LIBS_DIR . '/hessian/HessianClient.php';
 
 class BaseHessianClient extends HessianClient {
@@ -15,7 +15,7 @@ class BaseHessianClient extends HessianClient {
 	protected $infoException;
 
 	/**
-	 * ¶Ô¸¸Àà¹¹Ôìº¯Êı½øĞĞ¸ÄÔì£¬ºöÂÔ´«ÈëµÄ²ÎÊıÖ±½Ó´ÓÉèÖÃÖĞ½øĞĞ³õÊ¼»¯
+	 * å¯¹çˆ¶ç±»æ„é€ å‡½æ•°è¿›è¡Œæ”¹é€ ï¼Œå¿½ç•¥ä¼ å…¥çš„å‚æ•°ç›´æ¥ä»è®¾ç½®ä¸­è¿›è¡Œåˆå§‹åŒ–
 	 * @param string $url
 	 * @param string $options
 	 */
@@ -26,7 +26,7 @@ class BaseHessianClient extends HessianClient {
 	}
 	
 	/**
-	 * µ¥Àı³õÊ¼»¯¹¤×÷
+	 * å•ä¾‹åˆå§‹åŒ–å·¥ä½œ
 	 */
 	public static final function initialize() {
 		$className = get_called_class();
@@ -34,7 +34,7 @@ class BaseHessianClient extends HessianClient {
 	}
 
 	/**
-	 * ½øĞĞÊÂ¼ş´¥·¢¼°±ğÃûµÄ×ª»»¹¤×÷£¬Ö®ºóµ÷ÓÃÔ¶³ÌµÄ²Ù×÷·½·¨
+	 * è¿›è¡Œäº‹ä»¶è§¦å‘åŠåˆ«åçš„è½¬æ¢å·¥ä½œï¼Œä¹‹åè°ƒç”¨è¿œç¨‹çš„æ“ä½œæ–¹æ³•
 	 * @see HessianClient::__call()
 	 */
 	public function __call($method,$arguments) {
@@ -48,19 +48,19 @@ class BaseHessianClient extends HessianClient {
 			return $this->__hessianCall($method, $arguments);
 		}
 		catch (HessianFault $Ex) {
-			if ( $Ex->getMessage() == 'CscBizException' ) { // Èç¹ûÏûÏ¢ÎªCscBizException£¬ÎÒÃÇphp¶ËÎŞĞè´¦Àí
+			if ( $Ex->getMessage() == 'CscBizException' ) { // å¦‚æœæ¶ˆæ¯ä¸ºCscBizExceptionï¼Œæˆ‘ä»¬phpç«¯æ— éœ€å¤„ç†
 				$this->infoException = $Ex->detail;
 				return 'CscBizException';
 			}
 
 // 			throw new CHttpException(500, Yii::t('yii', 'Has CscAppException by {class}::{action}', array('{class}'=>get_called_class(),'{action}'=>$method)));
-			// ÕâÀïĞèÒª¼æÈİ£¬javaÅ×Òì³££¬°Ñ´íÎóµÄÒì³£ĞÅÏ¢·ÅÔÚmessageÖĞ .  By Bear
+			// è¿™é‡Œéœ€è¦å…¼å®¹ï¼ŒjavaæŠ›å¼‚å¸¸ï¼ŒæŠŠé”™è¯¯çš„å¼‚å¸¸ä¿¡æ¯æ”¾åœ¨messageä¸­ .  By Bear
 			throw new CHttpException(500, $Ex->getMessage()); 
 		}
 	}
 	
 	/**
-	 * ¸üĞÂHessianOptionsÉèÖÃ
+	 * æ›´æ–°HessianOptionsè®¾ç½®
 	 * @param array $options
 	 * @throws CHttpException
 	 */
@@ -76,7 +76,7 @@ class BaseHessianClient extends HessianClient {
 	}
 	
 	/**
-	 * ½øĞĞHessianOptions¶ÔÏó³õÊ¼»¯¹¤×÷
+	 * è¿›è¡ŒHessianOptionså¯¹è±¡åˆå§‹åŒ–å·¥ä½œ
 	 * @return HessianOptions|NULL
 	 */
 	private function transformOptions($HessianOptions=null){
@@ -97,7 +97,7 @@ class BaseHessianClient extends HessianClient {
 	}
 	
 	/**
-	 * Ö´ĞĞ·½·¨ÊÂ¼ş´¥·¢
+	 * æ‰§è¡Œæ–¹æ³•äº‹ä»¶è§¦å‘
 	 * @param string $method
 	 * @param array $paramsArg
 	 * @return mixed
@@ -111,7 +111,7 @@ class BaseHessianClient extends HessianClient {
 	}
 	
 	/**
-	 * ·½·¨Ãû½øĞĞ±ğÃû×ª»»
+	 * æ–¹æ³•åè¿›è¡Œåˆ«åè½¬æ¢
 	 * @param string $methodName
 	 * @return string
 	 */
@@ -121,8 +121,8 @@ class BaseHessianClient extends HessianClient {
 		}
 		return $methodName;
 	}
-}
+}`
 
 
 
-[²Î¿¼ÎÄµµ](http://hessian.caucho.com/)
+[å‚è€ƒæ–‡æ¡£](http://hessian.caucho.com/)
